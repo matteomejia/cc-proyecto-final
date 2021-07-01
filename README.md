@@ -10,7 +10,7 @@ La aplicación a utilizar es un ecommerce hecho previamente por los integrantes 
 
 ## Arquitectura
 
-Añador gráfico de las apps y modelos y procesos
+![Arquitectura](cloud_arq.png)
 
 ## Funcionalidad
 
