@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block head_title %}Cloud{% endblock head_title %}</title>
+
+  {% block extra_head %}
+  {% endblock extra_head %}
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+  {% block extra_css %}
+  {% endblock extra_css %}
+</head>
+<body>
+  {% include "navbar.html" %}
+
+  <div class="bg-gray">
+    {% block content %}
+    {% endblock content %}
+  </div>
+  
+  {% include "footer.html" %}
+
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+  {% block extra_js %}
+  {% endblock extra_js %}
+</body>
+</html>

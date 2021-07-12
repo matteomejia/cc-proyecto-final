@@ -1,0 +1,27 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+
+// Create your own map
+$custom-colors: (
+  "niigoki": #d3290f,
+  "shogoki": #6f4fa2,
+  "leaf": #52d053,
+  "orange": #ef722a,
+  "asuka": #3688F1,
+  "gray": #f8f9fa
+);
+
+$custom-spacers: (
+  6: $spacer * 4.5,
+  7: $spacer * 6,
+  8: $spacer * 7.5,
+  9: $spacer * 9,
+  10: $spacer * 10
+) !default;
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+$spacers: map-merge($spacers, $custom-spacers);
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";

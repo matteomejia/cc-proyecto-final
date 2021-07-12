@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+
+<div class="container py-8">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <h1 class="bg-shogoki text-white text-center py-3">{% trans "Sign Up" %}</h1>
+        <div class="card-body">
+          <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+          <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            {{ form.email|as_crispy_field }}
+            {{ form.password1|as_crispy_field }}
+            {{ form.password2|as_crispy_field }}
+            {{ form.first_name|as_crispy_field }}
+            {{ form.last_name|as_crispy_field }}
+            {{ form.country|as_crispy_field }}
+            {{ form.role|as_crispy_field }}
+            {{ form.phone|as_crispy_field }}
+            {{ form.date_of_birth|as_crispy_field }}
+            {{ form.school|as_crispy_field }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <div class="text-center">
+              <button class="btn btn-shogoki text-white" type="submit">{% trans "Sign Up" %}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

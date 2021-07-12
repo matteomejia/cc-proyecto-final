@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+
+<div class="container py-8">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <h1 class="bg-asuka text-white py-3 text-center">{% trans "Log In" %}</h1>
+                <div class="card-body">
+                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <a class="btn btn-niigoki" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                        <button class="btn btn-asuka text-white" type="submit">{% trans "Log In" %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
