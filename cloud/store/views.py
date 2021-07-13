@@ -3,6 +3,7 @@ import datetime
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 from cloud.workshops.models import Workshop
 from cloud.users.models import Student
@@ -40,7 +41,6 @@ class AddToCartView(LoginRequiredMixin, View):
             order = order_qs[0]
             inscription.order = order
             inscription.save()
-            return redirect("store:order-summary")
         else:
             order = Order.objects.create(
                 user=request.user
@@ -48,13 +48,17 @@ class AddToCartView(LoginRequiredMixin, View):
             order.save()
             inscription.order = order
             inscription.save()
-            return redirect("store:order-summary")
+
+        messages.info(request, "You added an inscription.")
+        return redirect("store:order-summary")
 
 
 class RemoveFromCartView(LoginRequiredMixin, View):
     def get(self, request, pk):
         inscription = get_object_or_404(Inscription, pk=pk)
         inscription.delete()
+
+        messages.info(request, "You removed an inscription.")
         return redirect("store:order-summary")
 
 
@@ -82,4 +86,5 @@ class CheckoutView(LoginRequiredMixin, View):
         order.paid_at = now
         order.save()
 
-        return redirect('users:profile')
+        messages.success(request, "Thanks for your purchase! You will receive an email with your receipt.")
+        return redirect('/')

@@ -40,7 +40,7 @@
         </tr>
       </tbody>
     </table>
-    <a class="btn btn-leaf {% if order.inscriptions.count == 0 %}disabled{% endif %}" href="/store/checkout/{{ order.pk }}">Proceed to payment</a>
+    <a class="btn btn-leaf text-white {% if order.inscriptions.count == 0 %}disabled{% endif %}" href="/store/checkout/{{ order.pk }}">Proceed to payment</a>
   </div>
 </section>
 {% endblock content %}

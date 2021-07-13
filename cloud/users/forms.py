@@ -7,6 +7,10 @@ from django_countries import countries
 from .models import Student, User
 from .choices import ROLE_CHOICES
 
+ROLE_CHOICES_2 = [
+    ('', _('Choose type'))
+] + ROLE_CHOICES
+
 class CustomSignupForm(SignupForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': _('Name')
@@ -18,13 +22,13 @@ class CustomSignupForm(SignupForm):
 
     role = forms.ChoiceField(widget=forms.Select(attrs={
         'id': 'role'
-    }), choices=ROLE_CHOICES, label=_('Client Type'))
+    }), choices=ROLE_CHOICES_2, label=_('Client Type'))
     phone = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': '+1987654321'
     }), max_length=24, label=_('Phone'), required=False)
-    date_of_birth = forms.DateField(widget=forms.SelectDateWidget(attrs={
-        'style': 'width: 33%; display: inline-block'
-    }, years=range(2021, 1920, -1)), label=_('Date of birth'), required=False)
+    date_of_birth = forms.DateField(widget=forms.DateInput(attrs={
+        'id': 'birth'
+    }), label=_('Date of birth'), required=False)
     school = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': _('School')
     }), max_length=255, label=_('School'), required=False)

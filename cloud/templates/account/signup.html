@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
-{% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}Signup{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+  integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock extra_css %}
 
 {% block content %}
 
@@ -11,9 +17,9 @@
   <div class="row">
     <div class="col-md-6 mx-auto">
       <div class="card">
-        <h1 class="bg-shogoki text-white text-center py-3">{% trans "Sign Up" %}</h1>
+        <h1 class="bg-shogoki text-white text-center py-3">Sign Up</h1>
         <div class="card-body">
-          <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+          <p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p>
           <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
             {% csrf_token %}
             {{ form.email|as_crispy_field }}
@@ -30,7 +36,7 @@
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
             <div class="text-center">
-              <button class="btn btn-shogoki text-white" type="submit">{% trans "Sign Up" %}</button>
+              <button class="btn btn-shogoki text-white" type="submit">Sign Up</button>
             </div>
           </form>
         </div>
@@ -40,3 +46,87 @@
 </div>
 
 {% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+  integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  var role = $('#role');
+  var phone = $('#div_id_phone').clone();
+  var birth = $('#div_id_date_of_birth').clone();
+  var school = $('#div_id_school').clone();
+
+  $('#div_id_phone').remove();
+  $('#div_id_date_of_birth').remove();
+  $('#div_id_school').remove();
+
+  var used = false;
+
+  role.change(function () {
+    var value = role.val();
+
+    if (used == false) {
+      if (value == 1) {
+        var elem = "<option value='1' selected>parent</option>";
+        elem += "<option value='2'>teacher</option>";
+        elem += "<option value='3'>adult student</option>";
+        role.empty().append(elem);
+      }
+      if (value == 2) {
+        var elem = "<option value='1'>parent</option>";
+        elem += "<option value='2' selected>teacher</option>";
+        elem += "<option value='3'>adult student</option>";
+        role.empty().append(elem);
+      }
+      if (value == 3) {
+        var elem = "<option value='1'>parent</option>";
+        elem += "<option value='2'>teacher</option>";
+        elem += "<option value='3' selected>adult student</option>";
+        role.empty().append(elem);
+      }
+
+      used = true;
+    }
+
+    if (value == 1) {
+      $('#div_id_phone').remove();
+      $('#div_id_date_of_birth').remove();
+      $('#div_id_school').remove();
+
+      $('#div_id_role').after(phone);
+      $('#div_id_phone').find('input').prop('required', true);
+    }
+    if (value == 2) {
+      $('#div_id_phone').remove();
+      $('#div_id_date_of_birth').remove();
+      $('#div_id_school').remove();
+
+      $('#div_id_role').after(phone);
+      $('#div_id_phone').find('input').prop('required', true);
+      $('#div_id_phone').after(school);
+      $('#div_id_school').find('input').prop('required', true);
+    };
+    if (value == 3) {
+      $('#div_id_phone').remove();
+      $('#div_id_date_of_birth').remove();
+      $('#div_id_school').remove();
+
+      $('#div_id_role').after(phone);
+      $('#div_id_phone').find('input').prop('required', true);
+      $('#div_id_phone').after(birth);
+      $('#div_id_date_of_birth').find('input').prop('required', true);
+      $('#div_id_date_of_birth').after(school);
+      $('#div_id_school').find('input').prop('required', true);
+
+      $('#birth').datepicker({
+        format: 'dd/mm/yyyy',
+        startDate: '-3d'
+      });
+    };
+  });
+</script>
+{% endblock extra_js %}
