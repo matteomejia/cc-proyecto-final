@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+  <div class="container">
+
+    <h1 class="text-center py-5">Perfil</h1>
+
+    <div class="row">
+      <div class="col-md-6 mx-auto mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2>{{ user.get_full_name }}</h2>
+            <h5>Client type: {{ user.get_role_display }}</h5>
+            <h5>Country: {{ user.get_country_display }}</h5>
+            <h5>Phone: {{ user.phone }}</h5>
+            <div class="d-grid mt-3">
+              <a class="btn btn-orange text-white" href="/users/edit-profile/">Edit</a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h3>
+          Students
+          <a class="btn btn-shogoki ms-2" href="/users/student-create/">Add Student</a>
+        </h3>
+      </div>
+      <hr class="mt-2 mb-3">
+      {% if students %}
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mb-5">
+        {% for student in students %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h4 class="card-title text-center">{{ student.get_full_name }}</h4>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Age: {{ student.age }}</li>
+                <li class="list-group-item">School: {{ student.school }}</li>
+              </ul>
+              <div class="d-grid mt-2">
+                <a class="btn btn-orange text-white" href="{{ student.get_absolute_url }}">Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="mb-4">You have no students.</p>
+      {% endif %}
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h3>
+          Inscriptions
+          <a class="btn btn-shogoki ms-2" href="/workshops/">Find Workshops</a>
+        </h3>
+      </div>
+      <hr class="mt-2 mb-3">
+      {% if inscriptions %}
+      <div class="row row-cols-1 row-cols-sm-2 mb-5">
+        {% for inscription in inscriptions %}
+        <div class="col mb-4 mb-lg-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h4 class="card-title text-center">{{ inscription.workshop.title }}</h4>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Student: {{ inscription.student.get_full_name }}</li>
+                <li class="list-group-item">Starts: {{ inscription.workshop.start_date }}</li>
+                {% if inscription.paid %}
+                <li class="list-group-item">Paid: <i class="bi bi-check-circle-fill text-leaf"></i></li>
+                {% else %}
+                <li class="list-group-item">Paid: <i class="bi bi-x-circle-fill text-niigoki"></i></li>`
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="mb-4">You have no inscriptions.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock content %}

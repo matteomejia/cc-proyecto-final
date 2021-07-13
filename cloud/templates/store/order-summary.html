@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Order Summary{% endblock head_title %}
+
+{% block content %}
+<section>
+  <div class="container-lg pb-8">
+    <h1 class="text-center fw-bold py-5">Order Summary</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Workshop</th>
+          <th scope="col">Student</th>
+          <th scope="col">Price</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for inscription in order.inscriptions.all %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ inscription.workshop.title }}</td>
+          <td>{{ inscription.student }}</td>
+          <td>
+            <b class="align-middle">S/ {{ inscription.get_final_price }}</b>
+          </td>
+          <td><a class="link-niigoki align-middle" href="{% url 'store:remove-from-cart' inscription.pk %}"
+              data-bs-toggle="tooltip" data-bs-placement="top" title="Remove"><i class="bi-x-square-fill"></i></a></td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td class="fw-bold">Usted no tiene una orden activa.</td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <td colspan="2"></td>
+          <td class="text-end"><b>Total:</b></td>
+          <td><b>S/ {{ object.get_total }}</b></td>
+        </tr>
+      </tbody>
+    </table>
+    <a class="btn btn-leaf {% if order.inscriptions.count == 0 %}disabled{% endif %}" href="/store/checkout/{{ order.pk }}">Proceed to payment</a>
+  </div>
+</section>
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+</script>
+{% endblock extra_js %}

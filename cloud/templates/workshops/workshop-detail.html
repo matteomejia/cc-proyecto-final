@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head_title %}{{ workshop.title }}{% endblock head_title %}
+
+{% block content %}
+<section>
+  <div class="container pt-5 pb-3">
+    <div class="row">
+      <div class="col text-center">
+        <h1>{{ workshop.title }}</h1>
+        <span class="badge bg-shogoki">{{ workshop.get_level_display }}</span>
+        <span class="badge bg-orange">{{ workshop.min_age }} to {{ workshop.max_age }} y/o</span>
+      </div>
+    </div>
+  </div>
+  <div class="container pt-3 pb-5">
+    <div class="row">
+      <div class="col-md-6">
+        <img class="img img-fluid" src="{{ workshop.image.url }}" alt="">
+      </div>
+      <div class="col-md-6">
+        <h2>Description:</h2>
+        <p>{{ workshop.description }}</p>
+        <ul>
+          {% if workshop.schedule %}
+          <li>Schedule: {{ workshop.schedule }}</li>
+          {% endif %}
+          {% if workshop.duration %}
+          <li>{{ workshop.duration }} weeks</li>
+          {% endif %}
+        </ul>
+
+        <div class="my-5">
+          {% if workshop.discount_price %}
+          <div class="display-6 text-decoration-line-through">
+            S/ {{ workshop.price }}
+          </div>
+          <div class="display-4 fw-bold text-niigoki">
+            S/ {{ workshop.discount_price }}
+          </div>
+          {% else %}
+          <div class="display-4 f2-bold">
+            S/ {{ workshop.price }}
+          </div>
+          {% endif %}
+        </div>
+        
+        {% if user.is_authenticated %}
+        <form class="row row-cols-1 row-cols-lg-2 align-items-center" action="{% url 'store:add-to-cart' workshop.slug %}" method="POST">
+          {% csrf_token %}
+          <div class="col">
+            <select class="form-select" name="student" id="student">
+              <option disabled selected value>Select a student</option>
+              {% for student in students %}
+              <option value="{{ student.slug }}">{{ student.get_full_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col">
+            <input class="btn btn-shogoki mt-2 mt-lg-0" type="submit" value="Add to cart" />
+          </div>
+        </form>
+        {% else %}
+        <a class="btn btn-shogoki" href="/accounts/login">Login to purchase</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

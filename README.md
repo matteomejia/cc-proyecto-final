@@ -20,7 +20,6 @@ Las principales funcionalidades de la aplicación son las siguientes
 - Creación de estudiantes
 - Compra de talleres (integración con procesador de pago)
 - Creación de talleres
-- Blog de articulos del sitio
 - Dashboard para manipular la base de datos de la aplicación
 
 ## Referencias
