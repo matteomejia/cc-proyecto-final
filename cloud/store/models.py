@@ -12,6 +12,9 @@ class Order(models.Model):
     paid = models.BooleanField(_('paid'), default=False)
     paid_at = models.DateTimeField(_('paid at'), blank=True, null=True)
 
+    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('updated at'), auto_now=True)
+
     def __str__(self):
         return self.user.email
 
@@ -27,12 +30,15 @@ class Order(models.Model):
 class Inscription(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name=_('order'), related_name='inscriptions', blank=True, null=True)
     workshop = models.ForeignKey(Workshop, on_delete=models.CASCADE, verbose_name=_('inscription'))
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, verbose_name=_('student'))
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('user'))
+
 
     paid = models.BooleanField(_('paid'), default=False)
     paid_at = models.DateTimeField(_('paid at'), blank=True, null=True)
 
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, verbose_name=_('student'))
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('user'))
+    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('updated at'), auto_now=True)
 
     def __str__(self):
         return self.student.first_name + " " + self.student.last_name + " - " + self.workshop.title

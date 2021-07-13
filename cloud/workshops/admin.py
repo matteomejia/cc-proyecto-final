@@ -9,7 +9,7 @@ class TopicAdmin(admin.ModelAdmin):
 
 class WorkshopAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title', 'start_date')}
-    list_display = ['title', 'start_date', 'status']
+    list_display = ['title', 'start_date', 'active', 'private']
 
 
 admin.site.register(Topic, TopicAdmin)

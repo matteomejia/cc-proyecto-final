@@ -37,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = "email"
     EMAIL_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = UserManager()
 
@@ -57,6 +57,9 @@ class Student(models.Model):
     school = models.CharField(_('school'), max_length=254)
 
     parent = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('parent'))
+
+    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('updated at'), auto_now=True)
 
     def __str__(self):
         return self.first_name + " " + self.last_name

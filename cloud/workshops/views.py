@@ -8,7 +8,7 @@ from .models import Workshop
 # Create your views here.
 
 class WorkshopListView(ListView):
-    queryset = Workshop.objects.filter(status=1)
+    queryset = Workshop.objects.filter(active=True, private=False)
     template_name = 'workshops/workshop-list.html'
 
 

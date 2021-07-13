@@ -63,7 +63,7 @@
           </div>
         </form>
         {% else %}
-        <a class="btn btn-shogoki" href="/accounts/login">Login to purchase</a>
+        <a class="btn btn-shogoki" href="/accounts/login?next={{ workshop.get_absolute_url }}">Login to purchase</a>
         {% endif %}
       </div>
     </div>

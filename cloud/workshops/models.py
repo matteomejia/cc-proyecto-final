@@ -39,7 +39,11 @@ class Workshop(models.Model):
     schedule = models.TextField(blank=True, null=True)
 
     level = models.PositiveSmallIntegerField(_('level'), choices=LEVEL_CHOICES, default=1)
-    status = models.PositiveSmallIntegerField(_('status'), choices=STATUS_CHOICES, default=1)
+    active = models.BooleanField(_('active'), default=True)
+    private = models.BooleanField(_('private'), default=False)
+
+    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('updated at'), auto_now=True)
 
     def __str__(self):
         return self.title
