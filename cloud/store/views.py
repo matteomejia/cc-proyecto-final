@@ -1,16 +1,43 @@
 import datetime
 
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views.generic import DetailView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.views.generic import DetailView, View
 from django.contrib import messages
 
+
 from cloud.workshops.models import Workshop
-from cloud.users.models import Student
+from cloud.users.models import Student, User
 
 from .models import Inscription, Order
 
 # Create your views here.
+def send_email_receipt(user, order):
+    order: Order = order
+    user: User = user
+
+    context = {
+        'user': user.first_name,
+        'order_id': str(order.id).zfill(8),
+        'order': order
+    }
+
+    subject = render_to_string("store/email/receipt_subject.txt")
+    text_body = render_to_string("store/email/receipt_body.txt", context)
+    html_body = render_to_string("store/email/receipt_body.html", context)
+
+    msg = EmailMultiAlternatives(
+        subject=subject,
+        body=text_body,
+        from_email="Cloud <hola@example.com>",
+        to=[user.email],
+        bcc=["hola@example.com"]
+    )
+    msg.attach_alternative(html_body, "text/html")
+    msg.send()
+
 
 class OrderSummaryView(LoginRequiredMixin, DetailView):
     template_name = 'store/order-summary.html'
@@ -85,6 +112,8 @@ class CheckoutView(LoginRequiredMixin, View):
         order.paid = True
         order.paid_at = now
         order.save()
+
+        send_email_receipt(request.user, order)
 
         messages.success(request, "Thanks for your purchase! You will receive an email with your receipt.")
         return redirect('/')

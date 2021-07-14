@@ -41,6 +41,8 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+    'anymail',
+
     'crispy_forms',
     'crispy_bootstrap5',
 ]

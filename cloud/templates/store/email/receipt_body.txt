@@ -1,0 +1,19 @@
+{% autoescape off %}
+Hello {{ user }}!
+
+This is your purchase confirmation for order #C{{ order_id }}:
+
+{% for inscription in order.inscriptions.all %}
+{{ forloop.counter }}
+Workshop: {{ inscription.workshop.title }}
+Student: {{ inscription.student.get_full_name }}
+Starts: {{ inscription.workshop.start_date }}
+Price: {{ inscription.get_final_price }}
+{% endfor %}
+
+Total price: {{ order.get_total }}
+
+If you have any questions please contact us at hola@example.com
+
+Thanks for choosing Cloud!
+{% endautoescape %}
