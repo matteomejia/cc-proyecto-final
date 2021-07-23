@@ -32,6 +32,13 @@ Esta aplicación fue seleccionada principalmente pues los integrantes entienden 
 
 - Multicontainer: la aplicación será desplegada en Kubernetes
 - Procesamiento de datos: la información relacionada a las compras en la aplicación será procesada en paralelo mediante Celery para realizar analítica.
+  - Generar data con Django Factory
+  - Al día, los talleres con fecha de inicio pasada se vuelven inactivos.
+  - Al día, se revisa qué talleres con descuentos están a una semana de empezar y se quita el descuento.
+  - A la semana, se revisa quiénes se han quedado con carritos sin pagar.
+  - Se borran los carritos inactivos.
+  - Se revisan los talleres más comprados por mes y el resultado de la query se guarda en un modelo con json field.
+  - Se revisan los usuarios por país que han comprado talleres por mes y se guardan en un modelo con json field.
 - Modelo de programación en la nube: el procesamiento anterior aprovechará el uso de In Memory Processing para acelerar los resultados de analítica.
 - Almacenamiento dinámico: 
 - Escalabilidad: mediante las herramientas de administración de Kubernetes, se proporcionarán reglas para garantizar la escalabilidad de la aplicación.
