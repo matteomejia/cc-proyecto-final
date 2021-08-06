@@ -1,0 +1,12 @@
+{
+    "type": "service_account",
+    "project_id": "utec-django",
+    "private_key_id": "b94aa71c7f2389fd4175672285a4fa66341890dc",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCUeT8lDwRTEvcp\nT4qynt92/7NcMxLLeBzXDJPgTmNdOfdM46akjwUG3wAwUVj+CUHjH6szHhWIWf4X\nT7r2fhVAK7y1/PV7ZjPrgXorvJRIiz/pH/4Mp08pyTY7a36aYpEnaOzSA9C2RsaQ\n2YVBPan+EV4jQQSqpbaHdQZliDKOcAukEagLFRaZKEREjdT/EY50Tswx09bsD/4e\nxVS6EpMOkdommcsbDAPUExPlL8IT9C9YNPCcmApRYrJ21LYWm8WhMVYtJrP3Fpp5\nAUPUpK96ZjRLy0DHZ4S8wtjM+LCXKSnrm3y3iA+4chwEAvRrRrXiGrEXc/Tm5x1S\nkIAbbloHAgMBAAECggEACOzG5m/iJyo/MD0HTdht/2W8fuDVEuUL+sNXSkb8Axke\nbAFNPZwZRcH27XCeZFrjGoeHT4HR8onSU81npDSNC3f1loz3pqzMly4HzYQ+96Nj\nOpzBNTqDcDQXrfe2uwoMxq0weylejO5xNjjVIUhXJR4fJghdAvMGJ1taAJVw0I4F\nOmTB3f1lPjSCJrx3Pd6Uq3AtLgl5KLAdHqTgCeZ/L0M7NP6+xzkNY9hOq0hN3wAw\nJUs6n1x6Y+5GCV33oi0DSlyfrhICL7fAAUIFRUk6xcwTq233W1PB5ysrB5fF0mV0\nbDP0UqWqg+6qi+lintcRxvdWTHpOJLBP4X7Mj7Rr+QKBgQDIiOT3D5RHG+jIwXw6\nxMjwpFc83oWf75xoQ8VwFVoErVxL47e84EQwZ0SgiXhgKZx7CCsuSlk1UUsT3G3Q\nASNjNppcH8wV0nJZNaFv6fztyKDLfVWiMP164D7i7E6QLALspjXhOY/FWjoMWqLF\nvPIa5LqZ5DDsA2ss//f/9KpYvwKBgQC9ihntRT3c7yWH+QmcalFKBAc+3N1DB60C\nnrpyc103nFlc/VJs+glBnDLZJemKDhROvt/iDz3XR9rte7KBnG4ejMa8iIRJnkLd\nF3G6jaowja7Ue5CiPXH75Raty22Rcfyxzr8Fqt+vFcimQR15sGXJKGL3FAfkd1Kz\n3ly2ccHIuQKBgDMeQk+AVynxQVu7hrFsbFR7cAmCJ8nnSJWDgRbbOoEqt/ZYbAPn\nnzo/eMz7fgX1VYA/StKX/TmMKXk8nXmCcMTfrGWDbYC6jo+TDj37BZCPrf1xS5z2\npAbolt89oaE6ttwgWme5Rp7mKxnvGMMTMRwN5ktIUfg3vuBPt6Y1dh79AoGAKTNp\n61/P0MTTXblO04dw4Cv7/zg3iKiUfStP0C0vqDT+X+5ZCoNXm8F+dCF/oJjq5Sss\ns5EomjFub40iAnakoVNsp/Ls/qu+UR0Vhb3hrug9hsbNa9b7fgwQX/sGeEVU7rnI\nYE0CjqanlSw2YgtsNMvop1jdVlZxzdOaR7Z2r1ECgYEAjF7ORrv+Wj9YfamjnBd0\nvOzu/0kALChuhygxmuGdVqpVNIXQFzVJnqRUpvNeg0T2xxVNDvxFhNBX0rzO4Ewn\nffnFjemRSGpIGg3a6xqhsr7g7q/yUfCjxJMWzeiqEhulA1U+DKDIbcxWkdSMX5AX\n2XF5E+Xo+nlAdn1y47UiZWY=\n-----END PRIVATE KEY-----\n",
+    "client_email": "djangorole@utec-django.iam.gserviceaccount.com",
+    "client_id": "114353209974470703991",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/djangorole%40utec-django.iam.gserviceaccount.com"
+}

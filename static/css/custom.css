@@ -1,0 +1,33 @@
+.text-hover-white:hover {
+  color: white !important;
+}
+
+.text-hover-asuka:hover {
+  color: #3688F1 !important;
+}
+
+.text-hover-niigoki:hover {
+  color: #d3290f !important;
+}
+
+.text-hover-shogoki:hover {
+  color: #6f4fa2 !important;
+}
+
+.text-hover-leaf:hover {
+  color: #52d053 !important;
+}
+
+.text-hover-orange:hover {
+  color: #ef722a !important;
+}
+
+
+.hover-shadow {
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+  transition: 0.25s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+}
