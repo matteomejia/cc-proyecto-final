@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-django
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app-django
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-django
+    spec:
+      containers:
+        - image: public.ecr.aws/n0b3b3j7/cloud:latest
+          imagePullPolicy: Always
+          name: app-django
+          env:
+            - name: AWS_STORAGE_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: cloud
+                  key: awsbucket
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: cloud
+                  key: awskey
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: cloud
+                  key: awssecret
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: cloud
+                  key: database
+            - name: SENDGRID_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: cloud
+                  key: sendgrid
+            - name: REDIS_URL
+              value: django-redis.ckkiy4.ng.0001.usw2.cache.amazonaws.com:6379
+          ports:
+            - containerPort: 8000
+        - image: public.ecr.aws/n0b3b3j7/nginx:latest
+          imagePullPolicy: Always
+          name: app-nginx
+          ports:
+            - containerPort: 80

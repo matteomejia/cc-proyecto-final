@@ -1,5 +1,8 @@
 from .base import *
-from .base import env
+import environ
+
+env = environ.Env()
+env.read_env(str(BASE_DIR / '.env'))
 
 SECRET_KEY = env.str("SECRET_KEY")
 

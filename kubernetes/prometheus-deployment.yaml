@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-prometheus
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app-prometheus
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-prometheus
+    spec:
+      containers:
+        - image: public.ecr.aws/n0b3b3j7/prometheus:latest
+          imagePullPolicy: Always
+          name: app-prometheus
+          ports:
+            - containerPort: 9091
