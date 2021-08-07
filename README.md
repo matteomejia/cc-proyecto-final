@@ -10,19 +10,43 @@ La aplicación a utilizar es un ecommerce hecho previamente por los integrantes 
 
 ## Arquitectura
 
-![Arquitectura](cloud.png)
+![Arquitectura](report_images/cloud.png)
 
 ## Funcionalidad
 
 Las principales funcionalidades de la aplicación son las siguientes
 
-- Registro de usuarios
-- Creación de estudiantes
-- Compra de talleres
-- Creación de talleres
-- Dashboard para manipular la base de datos de la aplicación
+![Vista principal](report_images/home.png)
 
-## Referencias
+### Registro de usuarios
+
+![Registro](report_images/register.png)
+
+![Login](report_images/login.png)
+
+### Creación de estudiantes
+
+![Crear estudiante](report_images/create_student.png)
+
+![Estudiante](report_images/student.png)
+
+### Compra de talleres
+
+![Paso 1](report_images/compra_1.png)
+
+![Paso 2](report_images/compra_2.png)
+
+![Paso 3](report_images/compra_3.png)
+
+![Paso 4](report_images/compra_4.png)
+
+### Creación de talleres
+
+![Crear taller](report_images/create_workshop.png)
+
+### Dashboard para manipular la base de datos de la aplicación
+
+![Administrador](report_images/admin.png)
 
 ## Motivación
 
@@ -30,18 +54,12 @@ Esta aplicación fue seleccionada principalmente pues los integrantes entienden 
 
 ## Conceptos de cloud
 
-- Multicontainer: la aplicación será desplegada en Kubernetes
-- Procesamiento de datos: la información relacionada a las compras en la aplicación será procesada en paralelo mediante Celery para realizar analítica.
-  - Generar data con Django Factory
-  - Al día, los talleres con fecha de inicio pasada se vuelven inactivos.
-  - Al día, se revisa qué talleres con descuentos están a una semana de empezar y se quita el descuento.
-  - A la semana, se revisa quiénes se han quedado con carritos sin pagar.
-  - Se borran los carritos inactivos.
-  - Se revisan los talleres más comprados por mes y el resultado de la query se guarda en un modelo con json field.
-  - Se revisan los usuarios por país que han comprado talleres por mes y se guardan en un modelo con json field.
+- Multicontainer: la aplicación será desplegada en [Kubernetes](docker-compose.yml)
+- Procesamiento de datos: la información relacionada a las compras en la aplicación será procesada en paralelo mediante Celery para realizar [analítica](cloud/celery.py). La información será guardada en un modelo especial de la base de datos.
 - Modelo de programación en la nube: el procesamiento anterior aprovechará el uso de In Memory Processing para acelerar los resultados de analítica.
-- Almacenamiento dinámico: 
 - Escalabilidad: mediante las herramientas de administración de Kubernetes, se proporcionarán reglas para garantizar la escalabilidad de la aplicación.
 - Testeo y monitoreo: para testear la carga de la aplicación, se utilizará la herramienta [Locust](https://locust.io/), mientras que para el monitoreo se utilizará [Prometheus](https://prometheus.io/)
 
 ## Ejecución
+- [Local](https://www.loom.com/share/19d5ee2d4f4643d6b8f857b705bef698)
+- [Deploy](https://www.loom.com/share/0fcbeabcd06b480a81fd19d9fe280b1a)
