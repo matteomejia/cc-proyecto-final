@@ -7,3 +7,7 @@ class QuickstartUser(HttpUser):
     @task
     def workshops(self):
         self.client.get("/workshops/")
+
+    @task
+    def home(self):
+        self.client.get("/")

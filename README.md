@@ -10,7 +10,7 @@ La aplicación a utilizar es un ecommerce hecho previamente por los integrantes 
 
 ## Arquitectura
 
-![Arquitectura](cloud_arq.png)
+![Arquitectura](cloud.png)
 
 ## Funcionalidad
 

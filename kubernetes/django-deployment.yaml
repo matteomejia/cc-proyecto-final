@@ -42,6 +42,8 @@ spec:
                 secretKeyRef:
                   name: cloud
                   key: sendgrid
+            - name: REDIS_URL
+              value: django-redis.ckkiy4.ng.0001.usw2.cache.amazonaws.com:6379
           ports:
             - containerPort: 8000
         - image: public.ecr.aws/n0b3b3j7/nginx:latest
