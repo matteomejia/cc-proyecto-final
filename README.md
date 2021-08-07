@@ -5,6 +5,10 @@ Proyecto Final de Cloud Computing
 - Sebastián Hurtado
 - Francisco Mejía
 
+## Presentación
+
+[Enalce](https://docs.google.com/presentation/d/1appV269FOXztv7B_N1ZDzU3LMfIlaAfDu3GmfmleL0A/edit?usp=sharing)
+
 ## Descripción
 La aplicación a utilizar es un ecommerce hecho previamente por los integrantes utilizando el framework web Django. 
 
