@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-django
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: service-django
+                port: 
+                  number: 80
+          - path: /workshops/
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: service-django
+                port: 
+                  number: 80
+          - path: /admin/
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: service-django
+                port: 
+                  number: 80

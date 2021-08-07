@@ -49,6 +49,8 @@ THIRD_PARTY_APPS = [
 
     'crispy_forms',
     'crispy_bootstrap5',
+
+    'django_prometheus'
 ]
 
 PROJECT_APPS = [
@@ -65,6 +67,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -72,6 +75,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware'
 ]
 
 from django.contrib.messages import constants as messages
@@ -164,7 +168,7 @@ SERVER_EMAIL = 'Cloud <hola@example.com>'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/users/profile/'
+LOGIN_REDIRECT_URL = '/'
 
 # Allauth
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
@@ -172,7 +176,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 ACCOUNT_FORMS = {
     'signup': 'cloud.users.forms.CustomSignupForm'
