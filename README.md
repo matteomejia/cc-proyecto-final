@@ -7,7 +7,7 @@ Proyecto Final de Cloud Computing
 
 ## Presentación
 
-[Enalce](https://docs.google.com/presentation/d/1appV269FOXztv7B_N1ZDzU3LMfIlaAfDu3GmfmleL0A/edit?usp=sharing)
+[Enlace](https://docs.google.com/presentation/d/1appV269FOXztv7B_N1ZDzU3LMfIlaAfDu3GmfmleL0A/edit?usp=sharing)
 
 ## Descripción
 La aplicación a utilizar es un ecommerce hecho previamente por los integrantes utilizando el framework web Django. 
