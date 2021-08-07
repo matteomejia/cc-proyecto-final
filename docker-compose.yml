@@ -9,11 +9,6 @@ services:
     depends_on: 
       - redis
 
-  nginx:
-    image: nginx
-    ports:
-      - "80:80"
-
   redis:
     image: redis:alpine
 
@@ -24,3 +19,10 @@ services:
     depends_on: 
       - django
       - redis
+
+  prometheus:
+    image: prometheus
+    ports:
+      - "9090:9090"
+    depends_on: 
+      - django
